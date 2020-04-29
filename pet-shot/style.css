@@ -1,0 +1,77 @@
+body{
+  font-family: 'Bai Jamjuree', sans-serif;
+  margin: 0;
+}
+
+.content {
+  margin: 10px auto;
+  box-shadow: 1px 1px 19px 15px rgba(43,43,43,0.34);
+  padding: 10px;
+  box-sizing: border-box;
+  max-width: 500px;
+}
+
+.content h1 {
+  color: #7733D0;
+  font-size: 22px;
+  text-align: center;
+}
+
+.content p {
+  width: 440px;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.content video{
+  width: 100%;
+  height: auto;
+  background-color: #D0CFB2;
+}
+
+.content textarea{
+  width: 100%;
+  margin-top: 10px;
+  height: 80px;
+  box-sizing: border-box;
+}
+
+.content button{
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: #7733D0;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 5px;
+}
+
+.content button:focus{
+  outline: none;
+  background-color: #8350D0;
+  transition-duration: 1s;
+}
+
+.content img{
+  max-width: 100%;
+  height: auto;
+}
+
+.content .caminho-imagem{
+  padding: 5px 10px;
+  border-radius: 3px;
+  background-color: #8350D0;
+  text-align: center;
+}
+
+.content .caminho-imagem a{
+  color: white;
+  text-decoration: none;
+}
+
+.content .caminho-imagem a:hover{
+  color: yellow;
+}
