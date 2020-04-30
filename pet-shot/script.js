@@ -5,7 +5,7 @@ function loadCamera(){
 	    video.setAttribute('playsinline', '');
 
 	if (navigator.mediaDevices.getUserMedia) {
-		navigator.mediaDevices.getUserMedia({audio: false, video: {facingMode: 'user'}})
+		navigator.mediaDevices.getUserMedia({audio: false, video: {facingMode: 'environment'}})
 		.then( function(stream) {
 			video.srcObject = stream;
 		})
