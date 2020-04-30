@@ -1,3 +1,5 @@
+var front = false;
+
 function loadCamera(){
 	var video = document.querySelector("#webCamera");
 		video.setAttribute('autoplay', '');
@@ -5,7 +7,7 @@ function loadCamera(){
 	    video.setAttribute('playsinline', '');
 
 	if (navigator.mediaDevices.getUserMedia) {
-		navigator.mediaDevices.getUserMedia({audio: false, video: {facingMode: 'environment'}})
+		navigator.mediaDevices.getUserMedia({audio: false, video: {facingMode: (front? "user" : "environment")}})
 		.then( function(stream) {
 			video.srcObject = stream;
 		})
@@ -38,10 +40,7 @@ loadCamera();
 
 //para ativar a câmera traseira
 
-var front = false;
-document.getElementById('flip-button').onclick = function() { front = !front; };
-
-var constraints = { video: { facingMode: (front? "user" : "environment") } };
+document.getElementById('flip-button').addEventListener("click", function() {front = !front;});
 
 //
 
