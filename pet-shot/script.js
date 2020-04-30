@@ -7,7 +7,7 @@ function loadCamera(){
 	    video.setAttribute('playsinline', '');
 
 	if (navigator.mediaDevices.getUserMedia) {
-		navigator.mediaDevices.getUserMedia({audio: false, video: {facingMode: (front? "user" : "environment")}})
+		navigator.mediaDevices.getUserMedia({audio: false, video: {facingMode: 'environment'}})
 		.then( function(stream) {
 			video.srcObject = stream;
 		})
@@ -40,7 +40,41 @@ loadCamera();
 
 //para ativar a câmera traseira
 
-document.getElementById('flip-button').addEventListener("click", function() {front = !front;});
+
+document.getElementById('flip-button').addEventListener ("click", event => {
+  if (typeof currentStream !== 'undefined') {
+    stopMediaTracks(currentStream);
+  }
+  const videoConstraints = {};
+  if (select.value === '') {
+    videoConstraints.facingMode = 'environment';
+  } else {
+    videoConstraints.deviceId = { exact: select.value };
+  }
+  const constraints = {
+    video: videoConstraints,
+    audio: false
+  };
+
+  navigator.mediaDevices
+    .getUserMedia(constraints)
+    .then(stream => {
+      currentStream = stream;
+      video.srcObject = stream;
+      return navigator.mediaDevices.enumerateDevices();
+    })
+    .then(gotDevices)
+    .catch(error => {
+      console.error(error);
+    });
+});
+
+var constraints = { video: { facingMode: (front? "user" : "environment") } };
+
+button.addEventListener('click', 
+
+
+
 
 //
 
