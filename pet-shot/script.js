@@ -1,5 +1,3 @@
-var front = false;
-
 function loadCamera(){
 	var video = document.querySelector("#webCamera");
 		video.setAttribute('autoplay', '');
@@ -37,6 +35,15 @@ function takeSnapShot(){
 }
 
 loadCamera();
+
+//para ativar a câmera traseira
+var front = false;
+
+document.getElementById('flip-button').addEventListener ("click", function() { front = !front; });
+
+var constraints = { video: { facingMode: (front? "user" : "environment") } };
+
+//
 
 let playingAudio = null;
 
