@@ -1,77 +1,94 @@
 body{
-  font-family: 'Bai Jamjuree', sans-serif;
-  margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
-.content {
+.principal-box {
   margin: 10px auto;
   box-shadow: 1px 1px 19px 15px rgba(43,43,43,0.34);
-  padding: 10px;
+  padding: 35px;
   box-sizing: border-box;
+  border-radius: 15px;
   max-width: 500px;
 }
 
-.content h1 {
-  color: #7733D0;
-  font-size: 22px;
-  text-align: center;
+.logo {
+  display: block;
+  margin: auto;
+  margin-bottom: 15px;
 }
 
-.content p {
-  width: 440px;
+.principal-box h1 {
+  width: 400px;
+  color: #264653;
+  font-size: 18px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.principal-box p {
+  width: 400px;
   margin: auto;
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 14px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
-.content video{
+.principal-box video{
   width: 100%;
   height: auto;
-  background-color: #D0CFB2;
+  background-color: #E5E5D8;
+  border-radius: 15px;
+  margin-bottom: 5px;
 }
 
-.content textarea{
-  width: 100%;
-  margin-top: 10px;
-  height: 80px;
-  box-sizing: border-box;
-}
-
-.content button{
+.principal-box button{
   width: 100%;
   padding: 10px;
   text-align: center;
-  background-color: #7733D0;
+  background-color: #E76F51;
   color: white;
   border-radius: 10px;
   border: none;
   margin-bottom: 5px;
+  font-family: 'Roboto', sans-serif;
 }
 
-.content button:focus{
+.principal-box button:focus{
   outline: none;
-  background-color: #8350D0;
+  background-color: #2A9D8F;
   transition-duration: 1s;
+  font-family: 'Roboto', sans-serif;
 }
 
-.content img{
+.principal-box img{
   max-width: 100%;
   height: auto;
+  border-radius: 15px;
 }
 
-.content .caminho-imagem{
-  padding: 5px 10px;
-  border-radius: 3px;
-  background-color: #8350D0;
+.footer img {
+  padding-top: 20px;
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.footer h1 {
+  width: 400px;
+  color: #264653;
+  font-size: 14px;
   text-align: center;
+  margin: auto;
+  margin-bottom: 10px;
 }
 
-.content .caminho-imagem a{
-  color: white;
-  text-decoration: none;
-}
-
-.content .caminho-imagem a:hover{
-  color: yellow;
+.footer p {
+  width: 400px;
+  color: #264653;
+  font-size: 11px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 10px;
 }

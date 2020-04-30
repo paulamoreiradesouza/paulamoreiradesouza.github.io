@@ -1,35 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-165026655-1"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-165026655-1');
+		</script>
+
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="style.css">
 		<title>PetShot</title>		
 	</head>
 
 	<body>
-		<div class="content">
-			<h1>Tire fotos do seu animalzinho de estimação com o PetShot</h1>
-			<p>Aponte a câmera do seu telefone para o seu pet, escolha um som para ele ouvir e tire a foto!</p>
+		<div class="principal-box">
 
-			<video autoplay="true" id="webCamera">
-			</video>
+			<header>
+				<img src="logo.png" width="230" height="69" alt="Logo PetShot" class="logo">
+			</header>
 
+			<h1>Tire fotos do seu bichinho no ângulo perfeito!</h1>
+			<p>Aponte a câmera do seu telefone para o seu pet e escolha um som. Quando ele olhar pra você, tire a foto.</p>
 
-			<button type="button" onclick="takeSnapShot()">Tirar foto e salvar</button>
+			<video autoplay="true" id="webCamera"></video>
+
+			<button type="button" onclick="takeSnapShot()">Tirar foto</button>
 			<img id="imagemConvertida" src="" />
 
 			<audio id="gato" src="gato.mp3"></audio>
 			<audio id="passaro" src="passaro.mp3"></audio>
-				<div>
-				  <button id="playCat">Gato</button>
-				  <button id="playBird">Pássaro</button>
-				  <button id="pauseBt" class="pause">Pausar o áudio</button>
-				  <button onclick="document.getElementById('audio').volume+=0.1">Aumentar o volume</button>
-				  <button onclick="document.getElementById().volume-=0.1">Diminuir o volume</button>
-				</div> 
+
+			<div>
+				<button id="flip-button">trocar-camera</button>
+				<button id="playCat">Gato</button>
+				<button id="playBird">Passarinho</button>
+				<button id="pauseBt">Pausar o áudio</button>
+			</div>
+
+			<footer class="footer">
+				<img src="logo.png" width="110" height="33">
+				<h1>Feito com &#9829; em BH ... e em casa - durante o Covid-19.</h1>
+				<p>&copy;Pet Shot - Todos direitos reservados a <a href="https://www.linkedin.com/in/paula-moreira-de-souza-89276565/">Paula Moreira de Souza</a></p>
+			</footer>
+
 		</div>
+
 		<script src="script.js"></script>
 	</body>
 </html>

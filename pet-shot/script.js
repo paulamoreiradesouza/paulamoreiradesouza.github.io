@@ -1,54 +1,50 @@
 function loadCamera(){
-	//Captura elemento de vídeo
 	var video = document.querySelector("#webCamera");
-		//As opções abaixo são necessárias para o funcionamento correto no iOS
 		video.setAttribute('autoplay', '');
 	    video.setAttribute('muted', '');
 	    video.setAttribute('playsinline', '');
-	    //--
-	
-	//Verifica se o navegador pode capturar mídia
+
 	if (navigator.mediaDevices.getUserMedia) {
 		navigator.mediaDevices.getUserMedia({audio: false, video: {facingMode: 'user'}})
 		.then( function(stream) {
-			//Definir o elemento víde a carregar o capturado pela webcam
 			video.srcObject = stream;
 		})
 		.catch(function(error) {
-			alert("Oooopps... para tirar uma foto do seu pet, é necessário permitir que nosso app acesse sua câmera =(");
+			alert("Para tirar uma foto do seu pet, é necessário permitir que o Pet Shot acesse sua câmera =(");
 		});
 	}
 }
 
 function takeSnapShot(){
-	//Captura elemento de vídeo
 	var video = document.querySelector("#webCamera");
-	
-	//Criando um canvas que vai guardar a imagem temporariamente
+
 	var canvas = document.createElement('canvas');
 	canvas.width = video.videoWidth;
 	canvas.height = video.videoHeight;
 	var ctx = canvas.getContext('2d');
 	
-	//Desnehando e convertendo as minensões
 	ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 	
-	//Criando o JPG
-	var dataURI = canvas.toDataURL('image/jpeg'); //O resultado é um BASE64 de uma imagem.
+	var dataURI = canvas.toDataURL('image/jpeg');
 	
 	var a = document.createElement("a");
 	a.href = dataURI;
-	a.download = "foto.jpg";
+	a.download = "petshot.jpg";
 	a.click();
 	document.querySelector("#imagemConvertida").setAttribute("src", dataURI);
 }
 
 loadCamera();
 
+//para ativar a câmera traseira
 
+var front = false;
+document.getElementById('flip-button').onclick = function() { front = !front; };
 
+var constraints = { video: { facingMode: (front? "user" : "environment") } };
 
-// play audios
+//
+
 let playingAudio = null;
 
 function playAudio(animal) {
