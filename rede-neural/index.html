@@ -1,43 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 	<head>
-		<title>Rede Neural</title>
 		<meta charset="utf-8">
-		<style type="text/css">
-			.desc-cnt div {display: none}
-			.desc-cnt[data-cnt="Cefaleia"] .desc-cefaleia {display: block;}
-			.desc-cnt[data-cnt="Tensão"] .desc-tensao {display: block;}
-		</style>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="style.css">
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-4XM69VD0WD"></script>
+		
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4XM69VD0WD');
+</script>
+		<title>Diagnóstico de dor de cabeça - Rede Neural</title>
 	</head>
 
 	<body>
 		<header>
-			<h1>Rede Naural - Dor de cabeça</h1>
-			<h2>Rede neural para diagnóstico de dor de cabeça e possível medicação.</h2>
+			<img src="logo.jpg" width="40" height="40" alt="logo">
+			<h1>Rede Neural</h1>
+			<button type="button" onclick="init()"><a href="#descricao">Receber indicação</a></button>
 		</header>
 
 		<main>
-			<h3>Com o seu dedo indicador, toque no seu rosto para indicar aonde há dor.</h3>
+			<h1>Entenda sua dor de cabeça com a rede neural artificial</h1>
+			<h2>Com a rede neural, indique o local da dor, receba um diagnóstico e recomendação para melhora dos sintomas.</h2>
+			<div class="exemplo">
+				<img src="testa.jpg" width="70" height="70">
+				<img src="olho.jpg" width="70" height="70">
+				<img src="cabeca.jpg" width="70" height="70">
+			</div>
+			
+			<h3>Clique no botão e coloque a mão sobre o local da dor. Sua indicação aparecerá abaixo.</h3>
+
+
+			<button type="button" onclick="init()">Quero receber minha indicação</button>
+			<div id="webcam-container"></div>
+			<div id="label-container"></div>
 		</main>
 
-		<button type="button" onclick="init()">Start</button>
-		<div id="webcam-container"></div>
-		<div id="label-container"></div>
-
-
-		<div>
-			<h2>Descricao</h2>
+		<main>
+			<h2 id="descricao">Descricao</h2>
 			<div class="desc-cnt">
-				<div class="desc-cefaleia">
-					<h3>Cefaleia</h3>
-					<p>Doi nos olhos</p>
+				<div class="desc-enxaqueca">
+					<h3>Enxaqueca</h3>
+					<h4>Dor em um dos lados da cabeça</h4>
+					<p><strong>Causa:</strong> podem ser originada pela falta de sono, mudanças no clima, fome ou estresse. Ela pode ser agravada pela atividade física, luz, sons ou odores.</p>
+					<p><strong>Para aliviar a dor:</strong> invista na massagem ou em uma xícara de café.</p>
+					<p><strong>Possível medicação:</strong> remédios analgésicos e anti-inflamatórios, como o paracetamol, ibuprofeno ou aspirina.</p>
 				</div>
 				<div class="desc-tensao">
-					<h3>Tensão</h3>
-					<p>Doi na testa</p>
+					<h3>Dor tensional</h3>
+					<h4>Dor na testa</h4>
+					<p><strong>Causa:</strong> é uma dor de cabeça causada pela rigidez dos músculos do pescoço, costas ou couro cabeludo, que pode ser causado por uma má postura, estresse, ansiedade ou má posição durante o sono.</p>
+					<p><strong>Para aliviar a dor:</strong> deve-se tentar relaxar, tomar um banho quente ou fazer alguma atividade, por exemplo. </p>
+					<p><strong>Possível medicação:</strong> remédios analgésicos, como paracetamol, ibuprofeno ou aspirina.</p>
+				</div>
+				<div class="desc-salvas">
+					<h3>Cafaleia em salvas</h3>
+					<h4>Dor no olho</h4>
+					<p><strong>Causa:</strong> é uma dor de cabeça que pode surgir devido a causas como alterações hormonais, hipertensão ou lesões na cabeça.</p>
+					<p><strong>Para aliviar a dor:</strong> inalar oxigênio através de uma máscara pode ser muito eficaz no tratamento.</p>
+					<p><strong>Possível medicação:</strong> os remédios mais usados são anti-inflamatórios não esteroides e analgésicos fortes, como os opioides.</p>
 				</div>
 			</div>
-		</div>
+		</main>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
@@ -46,13 +76,11 @@
 	const desc = document.querySelector(".desc-cnt");
 	console.log(desc)
 
-
-
 	// More API functions here:
 	// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
 	// the link to your model provided by Teachable Machine export panel
-	const URL = "https://teachablemachine.withgoogle.com/models/1K7pMtKhx/";
+	const URL = "https://teachablemachine.withgoogle.com/models/H0aZmYLZS/";
 
 	let model, webcam, labelContainer, maxPredictions;
 
@@ -99,22 +127,17 @@
 			labelContainer.childNodes[i].innerHTML = classPrediction;
 
 			if (prediction[i].probability.toFixed(2) > 0.8) {
-				desc.dataset.cnt = prediction[i].className;
+				desc.dataset.cnt = prediction[i].className
 			}
 		}
 	}
 </script>
-
-
-
-
 		<footer>
-			<p>Projeto teste de rede neural. Não possui validação médica.</p>
-			<p>Paula Moreira</p>
+			<h1>Rede Neural</h1>
+			<h2>Projeto teste para prática de rede neural artificial. Não possui validação científica. Consulte um médico para detalhes.</h2>
+			<p>Produzido por <strong>Paula Moreira - 2020</strong></p>
+			<a href="https://www.linkedin.com/in/paula-moreira-de-souza-89276565/"><img src="icon-linkedin.png" width="20" height="20" alt="logo-linkedin"></a>
 		</footer>
 
 	</body>
-
-
-
 </html>
