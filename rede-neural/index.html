@@ -74,7 +74,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 <script type="text/javascript">
 	const desc = document.querySelector(".desc-cnt");
-	console.log(desc)
 
 	// More API functions here:
 	// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
@@ -83,9 +82,15 @@
 	const URL = "https://teachablemachine.withgoogle.com/models/H0aZmYLZS/";
 
 	let model, webcam, labelContainer, maxPredictions;
+	let initialized = false;
 
 	// Load the image model and setup the webcam
 	async function init() {
+		if (initialized === true) {
+			return;
+		}
+
+		initialized = true;
 		const modelURL = URL + "model.json";
 		const metadataURL = URL + "metadata.json";
 
